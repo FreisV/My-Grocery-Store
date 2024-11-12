@@ -1,4 +1,4 @@
-﻿namespace AddProductPage
+﻿namespace My_Grocery_Store
 {
     public partial class AddProduct : Form
     {
@@ -33,9 +33,14 @@
 
             if (nameOfPrd == "" || unitsOfPrd == "" || priceOfPrd == "")
             {
-                MessageBox.Show("pls enter data", "Error");
+                MessageBox.Show("pls enter data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
+            }
+            if(nameOfPrd.Contains("@") || unitsOfPrd.Contains("@") || priceOfPrd.Contains("@"))
+            {
+                MessageBox.Show("You cant use this @ simbol!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             if (isIdAuto)
             {
@@ -45,6 +50,14 @@
             UnitsEnum unitsEnum = StrToEnum.convert(unitsOfPrd);
 
             Product prd = new Product(nameOfPrd, idOfPrd, priceOfPrd, unitsEnum);
+
+            FileOperations.write(prd.getAll());
+
+            nameBox.Text="";
+            idBox.Text = "";
+            priceBox.Text = "";
+
+            MessageBox.Show("sucess!", "ok", MessageBoxButtons.OK);
         }
 
         private void exitBtn_Click(object sender, EventArgs e)

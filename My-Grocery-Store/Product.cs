@@ -4,16 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AddProductPage
+namespace My_Grocery_Store
 {
     
     public enum UnitsEnum
     {
         kg,
         liter,
-        Piece
+        piece
     }
-    internal class Product
+    public class Product
     {
         private string _name;
         private string _id;
