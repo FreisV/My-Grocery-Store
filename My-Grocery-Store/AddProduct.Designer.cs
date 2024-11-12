@@ -42,7 +42,6 @@
             unitsBox = new ComboBox();
             addProductBtn = new Button();
             exitBtn = new Button();
-            label1 = new Label();
             SuspendLayout();
             // 
             // header
@@ -166,22 +165,12 @@
             exitBtn.UseVisualStyleBackColor = false;
             exitBtn.Click += exitBtn_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(30, 261);
-            label1.Name = "label1";
-            label1.Size = new Size(50, 20);
-            label1.TabIndex = 7;
-            label1.Text = "label1";
-            // 
             // AddProduct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Lavender;
             ClientSize = new Size(459, 350);
-            Controls.Add(label1);
             Controls.Add(exitBtn);
             Controls.Add(addProductBtn);
             Controls.Add(unitsBox);
@@ -215,6 +204,5 @@
         private ComboBox unitsBox;
         private Button addProductBtn;
         private Button exitBtn;
-        private Label label1;
     }
 }

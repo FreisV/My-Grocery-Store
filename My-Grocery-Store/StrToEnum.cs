@@ -16,7 +16,7 @@ namespace My_Grocery_Store
             }catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return UnitsEnum.Piece;
+                return UnitsEnum.piece;
             }
         }
     }

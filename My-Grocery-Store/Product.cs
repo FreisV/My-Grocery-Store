@@ -11,9 +11,9 @@ namespace My_Grocery_Store
     {
         kg,
         liter,
-        Piece
+        piece
     }
-    internal class Product
+    public class Product
     {
         private string _name;
         private string _id;
