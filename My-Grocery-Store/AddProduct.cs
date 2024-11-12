@@ -25,11 +25,12 @@
 
         private void addProductBtn_Click(object sender, EventArgs e)
         {
-            string nameOfPrd = nameBox.Text;
+            string nameOfPrd = nameBox.Text.Trim();
             string idOfPrd = idBox.Text;
             string priceOfPrd = priceBox.Text;
             string unitsOfPrd = unitsBox.Text;
             Boolean isIdAuto = autoIdCheck.Checked;
+
 
             if (nameOfPrd == "" || unitsOfPrd == "" || priceOfPrd == "")
             {
@@ -37,7 +38,7 @@
                 return;
 
             }
-            if(nameOfPrd.Contains("@") || unitsOfPrd.Contains("@") || priceOfPrd.Contains("@") || idOfPrd.Contains("@"))
+            if (nameOfPrd.Contains("@") || unitsOfPrd.Contains("@") || priceOfPrd.Contains("@") || idOfPrd.Contains("@"))
             {
                 MessageBox.Show("You cant use this @ simbol!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -45,11 +46,19 @@
             if (isIdAuto)
             {
                 idOfPrd = nameOfPrd[0] + RandCustNum.generate() + nameOfPrd[nameOfPrd.Length - 1];
-            }else if (idOfPrd == "")
+            }
+            else if (idOfPrd == "")
             {
                 MessageBox.Show("pls enter data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            if (!int.TryParse(priceOfPrd, out _))
+            {
+                MessageBox.Show("pls enter valid data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            
 
             UnitsEnum unitsEnum = StrToEnum.convert(unitsOfPrd);
 
@@ -57,11 +66,11 @@
 
             FileOperations.write(prd.getAll());
 
-            nameBox.Text="";
+            nameBox.Text = "";
             idBox.Text = "";
             priceBox.Text = "";
 
-            MessageBox.Show("sucess!", "ok", MessageBoxButtons.OK);
+            MessageBox.Show("success!", "ok", MessageBoxButtons.OK);
         }
 
         private void exitBtn_Click(object sender, EventArgs e)
@@ -70,6 +79,16 @@
         }
 
         private void AddProduct_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void autoIdCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            idBox.Enabled = !autoIdCheck.Checked;
+        }
+
+        private void idBox_TextChanged(object sender, EventArgs e)
         {
 
         }
