@@ -7,12 +7,10 @@ namespace My_Grocery_Store
         public ShoppingPage()
         {
             InitializeComponent();
-            productName.Text = selectedProduct.Name;
-            id.Text = selectedProduct.Id;
-            price.Text = $"{selectedProduct.Price} zl {selectedProduct.Units}";
         }
 
-        private Product selectedProduct = new Product("cola", "13", "5", UnitsEnum.liter);
+        private Product[] products = [];
+        private Product? selectedProduct = null;
         private Basket basket = new Basket();
 
         private void ReloadShoppingBasket()
@@ -39,6 +37,11 @@ namespace My_Grocery_Store
                 MessageBox.Show("Quantity can't be negative", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            else if (selectedProduct == null)
+            {
+                MessageBox.Show("You didn't select any product", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             
             basket.AddProduct(selectedProduct.Name, Convert.ToInt32(quantity.Value));
@@ -49,20 +52,31 @@ namespace My_Grocery_Store
 
         private void selectButton_Click(object sender, EventArgs e)
         {
+            selectedProduct = products[listBox1.SelectedIndex];
+
             productName.Text = selectedProduct.Name;
             id.Text = selectedProduct.Id;
-            price.Text = $"{selectedProduct.Price} zl {selectedProduct.Units}";
+            price.Text = $"{selectedProduct.Price} zl /{selectedProduct.Units}";
 
         }
 
         private void checkoutButton_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show($"Your Sum is: {basket.Sum}\nThank tou for shopping");
+            basket.Clear();
+            ReloadShoppingBasket();
         }
 
         private void ShoppingPage_Load(object sender, EventArgs e)
         {
+            products = FileOperations.getProds();
 
+
+            foreach (Product product in products)
+            {
+                if (product ==  null) continue;
+                listBox1.Items.Add(product.Name);
+            }
         }
     }
 }

@@ -45,5 +45,11 @@ namespace My_Grocery_Store
             _products = newProducts;
         }
 
+        public void Clear()
+        {
+            _products = new string[0];
+            _sum = 0;
+        }   
+
     }
 }
