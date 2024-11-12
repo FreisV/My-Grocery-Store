@@ -52,7 +52,14 @@ namespace My_Grocery_Store
 
         private void selectButton_Click(object sender, EventArgs e)
         {
-            selectedProduct = products[listBox1.SelectedIndex];
+            try
+            {
+                selectedProduct = products[listBox1.SelectedIndex];
+            }catch(Exception ex)
+            {
+                MessageBox.Show("pls select first", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             productName.Text = selectedProduct.Name;
             id.Text = selectedProduct.Id;
