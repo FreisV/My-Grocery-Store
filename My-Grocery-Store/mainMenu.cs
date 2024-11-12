@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Main_menu
 {
-    public partial class Form1 : Form
+    public partial class mainMenu : Form
     {
-        public Form1()
+        public mainMenu()
         {
             InitializeComponent();
         }
@@ -30,14 +30,14 @@ namespace Main_menu
         private void button1_Click(object sender, EventArgs e)
         {
             // Open the "Add Products" menu
-            Form2 frm = new Form2();
+            AddProduct frm = new AddProduct();
             frm.ShowDialog();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             // Open the "Shopping Menu" menu
-            Form3 frm = new Form3();
+            ShoppingPage frm = new ShoppingPage();
             frm.ShowDialog();
         }
 

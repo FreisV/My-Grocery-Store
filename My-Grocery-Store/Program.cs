@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Main_menu;
 
-namespace Main_menu
+namespace My_Grocery_Store
 {
     internal static class Program
     {
@@ -16,7 +17,7 @@ namespace Main_menu
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new mainMenu());
         }
     }
 }
