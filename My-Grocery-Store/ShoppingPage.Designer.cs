@@ -31,23 +31,23 @@
             label1 = new Label();
             label2 = new Label();
             listBox1 = new ListBox();
-            listView1 = new ListView();
             label3 = new Label();
             label4 = new Label();
-            label5 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            sum = new Label();
+            selectButton = new Button();
+            checkoutButton = new Button();
             label6 = new Label();
             label7 = new Label();
             label8 = new Label();
             label9 = new Label();
-            label10 = new Label();
-            label11 = new Label();
-            label12 = new Label();
-            numericUpDown1 = new NumericUpDown();
-            button3 = new Button();
-            button4 = new Button();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            productName = new Label();
+            id = new Label();
+            price = new Label();
+            quantity = new NumericUpDown();
+            addButton = new Button();
+            exitButton = new Button();
+            ShoppingBasket = new ListBox();
+            ((System.ComponentModel.ISupportInitialize)quantity).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -81,23 +81,15 @@
             listBox1.Size = new Size(240, 154);
             listBox1.TabIndex = 2;
             // 
-            // listView1
-            // 
-            listView1.Location = new Point(284, 100);
-            listView1.Name = "listView1";
-            listView1.Size = new Size(240, 154);
-            listView1.TabIndex = 3;
-            listView1.UseCompatibleStateImageBehavior = false;
-            // 
             // label3
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             label3.Location = new Point(284, 77);
             label3.Name = "label3";
-            label3.Size = new Size(113, 20);
+            label3.Size = new Size(126, 20);
             label3.TabIndex = 4;
-            label3.Text = "Shopping Page";
+            label3.Text = "Shopping Basket";
             // 
             // label4
             // 
@@ -109,37 +101,39 @@
             label4.TabIndex = 5;
             label4.Text = "Sum:";
             // 
-            // label5
+            // sum
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Microsoft Sans Serif", 11.25F);
-            label5.Location = new Point(324, 266);
-            label5.Name = "label5";
-            label5.Size = new Size(16, 18);
-            label5.TabIndex = 6;
-            label5.Text = "0";
+            sum.AutoSize = true;
+            sum.Font = new Font("Microsoft Sans Serif", 11.25F);
+            sum.Location = new Point(324, 266);
+            sum.Name = "sum";
+            sum.Size = new Size(16, 18);
+            sum.TabIndex = 6;
+            sum.Text = "0";
             // 
-            // button1
+            // selectButton
             // 
-            button1.BackColor = Color.PaleTurquoise;
-            button1.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button1.Location = new Point(20, 260);
-            button1.Name = "button1";
-            button1.Size = new Size(240, 33);
-            button1.TabIndex = 7;
-            button1.Text = "Select";
-            button1.UseVisualStyleBackColor = false;
+            selectButton.BackColor = Color.PaleTurquoise;
+            selectButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            selectButton.Location = new Point(20, 260);
+            selectButton.Name = "selectButton";
+            selectButton.Size = new Size(240, 33);
+            selectButton.TabIndex = 7;
+            selectButton.Text = "Select";
+            selectButton.UseVisualStyleBackColor = false;
+            selectButton.Click += selectButton_Click;
             // 
-            // button2
+            // checkoutButton
             // 
-            button2.BackColor = Color.PaleTurquoise;
-            button2.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button2.Location = new Point(399, 260);
-            button2.Name = "button2";
-            button2.Size = new Size(125, 33);
-            button2.TabIndex = 8;
-            button2.Text = "Checkout";
-            button2.UseVisualStyleBackColor = false;
+            checkoutButton.BackColor = Color.PaleTurquoise;
+            checkoutButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            checkoutButton.Location = new Point(399, 260);
+            checkoutButton.Name = "checkoutButton";
+            checkoutButton.Size = new Size(125, 33);
+            checkoutButton.TabIndex = 8;
+            checkoutButton.Text = "Checkout";
+            checkoutButton.UseVisualStyleBackColor = false;
+            checkoutButton.Click += checkoutButton_Click;
             // 
             // label6
             // 
@@ -181,68 +175,80 @@
             label9.TabIndex = 12;
             label9.Text = "Quantity:";
             // 
-            // label10
+            // productName
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Microsoft Sans Serif", 11.25F);
-            label10.Location = new Point(131, 320);
-            label10.Name = "label10";
-            label10.Size = new Size(13, 18);
-            label10.TabIndex = 13;
-            label10.Text = "-";
+            productName.AutoSize = true;
+            productName.Font = new Font("Microsoft Sans Serif", 11.25F);
+            productName.Location = new Point(131, 320);
+            productName.Name = "productName";
+            productName.Size = new Size(13, 18);
+            productName.TabIndex = 13;
+            productName.Text = "-";
             // 
-            // label11
+            // id
             // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Microsoft Sans Serif", 11.25F);
-            label11.ImageAlign = ContentAlignment.MiddleRight;
-            label11.Location = new Point(131, 344);
-            label11.Name = "label11";
-            label11.Size = new Size(13, 18);
-            label11.TabIndex = 14;
-            label11.Text = "-";
-            label11.TextAlign = ContentAlignment.MiddleRight;
+            id.AutoSize = true;
+            id.Font = new Font("Microsoft Sans Serif", 11.25F);
+            id.ImageAlign = ContentAlignment.MiddleRight;
+            id.Location = new Point(131, 344);
+            id.Name = "id";
+            id.Size = new Size(13, 18);
+            id.TabIndex = 14;
+            id.Text = "-";
+            id.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // label12
+            // price
             // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Microsoft Sans Serif", 11.25F);
-            label12.Location = new Point(131, 369);
-            label12.Name = "label12";
-            label12.Size = new Size(13, 18);
-            label12.TabIndex = 15;
-            label12.Text = "-";
+            price.AutoSize = true;
+            price.Font = new Font("Microsoft Sans Serif", 11.25F);
+            price.Location = new Point(131, 369);
+            price.Name = "price";
+            price.Size = new Size(13, 18);
+            price.TabIndex = 15;
+            price.Text = "-";
             // 
-            // numericUpDown1
+            // quantity
             // 
-            numericUpDown1.Location = new Point(131, 395);
-            numericUpDown1.Margin = new Padding(2);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(129, 23);
-            numericUpDown1.TabIndex = 17;
+            quantity.Location = new Point(131, 395);
+            quantity.Margin = new Padding(2);
+            quantity.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            quantity.Name = "quantity";
+            quantity.Size = new Size(129, 23);
+            quantity.TabIndex = 17;
+            quantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // button3
+            // addButton
             // 
-            button3.BackColor = Color.PaleTurquoise;
-            button3.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button3.Location = new Point(20, 449);
-            button3.Name = "button3";
-            button3.Size = new Size(240, 33);
-            button3.TabIndex = 18;
-            button3.Text = "Add to basket";
-            button3.UseVisualStyleBackColor = false;
+            addButton.BackColor = Color.PaleTurquoise;
+            addButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            addButton.Location = new Point(20, 449);
+            addButton.Name = "addButton";
+            addButton.Size = new Size(240, 33);
+            addButton.TabIndex = 18;
+            addButton.Text = "Add to basket";
+            addButton.UseVisualStyleBackColor = false;
+            addButton.Click += addButton_Click;
             // 
-            // button4
+            // exitButton
             // 
-            button4.BackColor = Color.Tomato;
-            button4.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
-            button4.Location = new Point(284, 449);
-            button4.Name = "button4";
-            button4.Size = new Size(240, 33);
-            button4.TabIndex = 19;
-            button4.Text = "Exit";
-            button4.UseVisualStyleBackColor = false;
-            button4.Click += button4_Click;
+            exitButton.BackColor = Color.Tomato;
+            exitButton.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
+            exitButton.Location = new Point(284, 449);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(240, 33);
+            exitButton.TabIndex = 19;
+            exitButton.Text = "Exit";
+            exitButton.UseVisualStyleBackColor = false;
+            exitButton.Click += exitButton_Click;
+            // 
+            // ShoppingBasket
+            // 
+            ShoppingBasket.FormattingEnabled = true;
+            ShoppingBasket.ItemHeight = 15;
+            ShoppingBasket.Location = new Point(284, 100);
+            ShoppingBasket.Name = "ShoppingBasket";
+            ShoppingBasket.Size = new Size(240, 154);
+            ShoppingBasket.TabIndex = 21;
             // 
             // ShoppingPage
             // 
@@ -250,22 +256,22 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             ClientSize = new Size(544, 501);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(numericUpDown1);
-            Controls.Add(label12);
-            Controls.Add(label11);
-            Controls.Add(label10);
+            Controls.Add(ShoppingBasket);
+            Controls.Add(exitButton);
+            Controls.Add(addButton);
+            Controls.Add(quantity);
+            Controls.Add(price);
+            Controls.Add(id);
+            Controls.Add(productName);
             Controls.Add(label9);
             Controls.Add(label8);
             Controls.Add(label7);
             Controls.Add(label6);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(label5);
+            Controls.Add(checkoutButton);
+            Controls.Add(selectButton);
+            Controls.Add(sum);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(listView1);
             Controls.Add(listBox1);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -273,7 +279,8 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "ShoppingPage";
             Text = "Shopping Page";
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            Load += ShoppingPage_Load;
+            ((System.ComponentModel.ISupportInitialize)quantity).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -283,21 +290,21 @@
         private Label label1;
         private Label label2;
         private ListBox listBox1;
-        private ListView listView1;
         private Label label3;
         private Label label4;
-        private Label label5;
-        private Button button1;
-        private Button button2;
+        private Label sum;
+        private Button selectButton;
+        private Button checkoutButton;
         private Label label6;
         private Label label7;
         private Label label8;
         private Label label9;
-        private Label label10;
-        private Label label11;
-        private Label label12;
-        private NumericUpDown numericUpDown1;
-        private Button button3;
-        private Button button4;
+        private Label productName;
+        private Label id;
+        private Label price;
+        private NumericUpDown quantity;
+        private Button addButton;
+        private Button exitButton;
+        private ListBox ShoppingBasket;
     }
 }

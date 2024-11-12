@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AddProductPage
+namespace My_Grocery_Store
 {
     public static class StrToEnum
     {

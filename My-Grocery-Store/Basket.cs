@@ -1,31 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace My_Grocery_Store
 {
     internal class Basket
     {
-        private int _sum = 0;
-        public Basket() { }
+        private string[] _products;
+        private int _sum;
 
-        public int Sum {
+        public Basket()
+        {
+            _products = new string[0];
+            _sum = 0;
+        }
+
+
+        public string[] Products { get { return _products; } }
+
+        public int Sum
+        {
             get { return _sum; }
             set
             {
-                if (value >= 0)
+                if (value < 0)
                 {
-                    _sum = value;
+                    throw new ArgumentException("Sum can not be negative");
                 }
-                else
-                {
-                    throw new ArgumentException("Age cannot be negative.");
-                }
+                _sum = value;
             }
         }
+
+        public void AddProduct(string product, int quantity)
+        {
+            string[] newProducts = new string[_products.Length + 1];
+
+            Array.Copy(_products, newProducts, _products.Length);
+
+            newProducts[^1] = $"{product} x{quantity}";
+
+            _products = newProducts;
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace AddProductPage
+﻿namespace My_Grocery_Store
 {
     public partial class AddProduct : Form
     {

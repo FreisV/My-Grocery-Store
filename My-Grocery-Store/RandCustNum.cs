@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace AddProductPage
+namespace My_Grocery_Store
 {
     public static class RandCustNum
     {
