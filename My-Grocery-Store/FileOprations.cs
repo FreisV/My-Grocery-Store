@@ -21,7 +21,7 @@ namespace My_Grocery_Store
         }
         public static Product[] getProds()
         {
-            FileStream filedata = new FileStream("dataBase.txt", FileMode.Open, FileAccess.Read);
+            FileStream filedata = new FileStream("dataBase.txt", FileMode.OpenOrCreate, FileAccess.Read);
             StreamReader reader = new StreamReader(filedata);
 
             string rawProduct = reader.ReadLine();
