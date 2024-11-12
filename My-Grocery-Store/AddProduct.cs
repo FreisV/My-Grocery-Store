@@ -37,7 +37,7 @@
                 return;
 
             }
-            if(nameOfPrd.Contains("@") || unitsOfPrd.Contains("@") || priceOfPrd.Contains("@"))
+            if(nameOfPrd.Contains("@") || unitsOfPrd.Contains("@") || priceOfPrd.Contains("@") || idOfPrd.Contains("@"))
             {
                 MessageBox.Show("You cant use this @ simbol!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -45,6 +45,10 @@
             if (isIdAuto)
             {
                 idOfPrd = nameOfPrd[0] + RandCustNum.generate() + nameOfPrd[nameOfPrd.Length - 1];
+            }else if (idOfPrd == "")
+            {
+                MessageBox.Show("pls enter data", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
 
             UnitsEnum unitsEnum = StrToEnum.convert(unitsOfPrd);
