@@ -278,6 +278,7 @@
             Controls.Add(label1);
             Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "ShoppingPage";
             Text = "Shopping Page";
             Load += ShoppingPage_Load;

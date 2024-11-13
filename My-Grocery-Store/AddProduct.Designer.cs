@@ -178,6 +178,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             BackColor = Color.Lavender;
             ClientSize = new Size(402, 262);
             Controls.Add(exitBtn);
@@ -192,7 +193,9 @@
             Controls.Add(idBox);
             Controls.Add(nameBox);
             Controls.Add(header);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 2, 3, 2);
+            MaximizeBox = false;
             Name = "AddProduct";
             Text = "Form1";
             Load += AddProduct_Load;
