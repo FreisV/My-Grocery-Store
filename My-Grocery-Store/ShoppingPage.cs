@@ -43,7 +43,7 @@ namespace My_Grocery_Store
                 return;
             }
 
-            
+
             basket.AddProduct(selectedProduct.Name, Convert.ToInt32(quantity.Value));
             basket.Sum += Convert.ToInt32(selectedProduct.Price) * Convert.ToInt32(quantity.Value);
 
@@ -52,7 +52,15 @@ namespace My_Grocery_Store
 
         private void selectButton_Click(object sender, EventArgs e)
         {
-            selectedProduct = products[listBox1.SelectedIndex];
+            try
+            {
+                selectedProduct = products[listBox1.SelectedIndex];
+            }
+            catch
+            {
+                MessageBox.Show("You should select something", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             productName.Text = selectedProduct.Name;
             id.Text = selectedProduct.Id;
@@ -74,9 +82,14 @@ namespace My_Grocery_Store
 
             foreach (Product product in products)
             {
-                if (product ==  null) continue;
+                if (product == null) continue;
                 listBox1.Items.Add(product.Name);
             }
+        }
+
+        private void quantity_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

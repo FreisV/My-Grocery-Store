@@ -216,6 +216,7 @@
             quantity.Size = new Size(129, 23);
             quantity.TabIndex = 17;
             quantity.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            quantity.ValueChanged += quantity_ValueChanged;
             // 
             // addButton
             // 
