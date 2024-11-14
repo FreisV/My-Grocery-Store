@@ -80,6 +80,7 @@
             button3.TabIndex = 3;
             button3.Text = "Exit";
             button3.UseVisualStyleBackColor = false;
+            button3.Click += button3_Click_1;
             // 
             // label2
             // 

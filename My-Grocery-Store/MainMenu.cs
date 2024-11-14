@@ -36,5 +36,10 @@ namespace My_Grocery_Store
             // Close Button
             this.Close();
         }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
